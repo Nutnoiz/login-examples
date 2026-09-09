@@ -1,0 +1,137 @@
+<div class="main-page">
+
+  <aside class="sidebar">
+
+    <div class="logo">
+      <div class="system-name">
+        ERP UNB SYSTEM
+      </div>
+
+      @if (user) {
+        <div class="user">
+          👤
+          {{ user.name_thai }}
+          {{ user.surname_thai }}
+        </div>
+      }
+    </div>
+
+    <div class="menu">
+
+      @if (loading) {
+        <div class="menu-status">
+          กำลังโหลด Menu...
+        </div>
+      }
+
+      @if (errorMessage) {
+        <div class="menu-error">
+          {{ errorMessage }}
+        </div>
+      }
+
+      @for (menu of menus; track menu.menu_id) {
+
+        <div class="menu-node">
+
+          <div
+            class="menu-link"
+            (click)="openMenu(menu)"
+          >
+
+            <span class="menu-icon">
+              {{ menu.icon || '•' }}
+            </span>
+
+            <span class="menu-name">
+              {{ menu.menu_name }}
+            </span>
+
+            @if (menu.children.length > 0) {
+              <span class="arrow">
+                {{ menu.expanded ? '▼' : '▶' }}
+              </span>
+            }
+
+          </div>
+
+          @if (
+            menu.expanded &&
+            menu.children.length > 0
+          ) {
+
+            <div class="submenu">
+
+              @for (
+                child of menu.children;
+                track child.menu_id
+              ) {
+
+                <div
+                  class="submenu-link"
+                  (click)="openMenu(child)"
+                >
+
+                  <span>
+                    └
+                  </span>
+
+                  <span>
+                    {{ child.menu_name }}
+                  </span>
+
+                </div>
+
+              }
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+    </div>
+
+  </aside>
+
+
+  <main class="content">
+
+    <div class="content-box">
+
+      <div class="page-title">
+        ERP UNB System
+      </div>
+
+      @if (user) {
+
+        <h1>
+          ยินดีต้อนรับ
+          {{ user.name_thai }}
+          {{ user.surname_thai }}
+        </h1>
+
+        <p>
+          Username:
+          {{ user.username }}
+        </p>
+
+      }
+
+      <hr>
+
+      <h2>
+        หน้าหลัก
+      </h2>
+
+      <p>
+        UNB ERP System
+      </p>
+
+    </div>
+
+  </main>
+
+</div>

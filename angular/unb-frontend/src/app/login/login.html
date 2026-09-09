@@ -1,0 +1,107 @@
+<div class="login-page">
+
+  <div class="card-login">
+
+    <!-- Header -->
+    <div class="login-header text-center">
+
+      <img
+        src="assets/UNB_LOGO.png"
+        class="logo mb-2"
+        alt="UNB Logo"
+      >
+
+      <h5 class="mb-1 fw-bold">
+        ERP UNB System
+      </h5>
+
+      <small class="text-muted">
+        Union Belt International Co., Ltd.
+      </small>
+
+    </div>
+
+    <hr>
+
+    <!-- Error -->
+    @if (errorMessage) {
+      <div class="alert alert-danger text-center">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <!-- Login Form -->
+    <form (ngSubmit)="login()">
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Username
+        </label>
+
+        <input
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          class="form-control"
+          placeholder="Enter username"
+          autocomplete="username"
+        >
+
+      </div>
+
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Password
+        </label>
+
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          class="form-control"
+          placeholder="Enter password"
+          autocomplete="current-password"
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="loading"
+      >
+        {{ loading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ' }}
+      </button>
+
+
+      <div class="text-center mt-3">
+
+        <a
+          href="#"
+          class="link-secondary small"
+          (click)="$event.preventDefault()"
+        >
+          สมัครสมาชิกใหม่
+        </a>
+
+      </div>
+
+    </form>
+
+
+    <!-- Footer -->
+    <div class="footer text-center mt-3">
+
+      <small class="text-muted">
+        © UNB ERP System
+      </small>
+
+    </div>
+
+  </div>
+
+</div>
