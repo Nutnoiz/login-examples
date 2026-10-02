@@ -2,14 +2,16 @@
 
 Angular 22 standalone frontend สำหรับตัวอย่าง Role-Based Login and Dynamic Menu
 
-อ่านภาพรวม สถาปัตยกรรม Database/API contract วิธีเปิด PHP API และข้อจำกัดด้านความปลอดภัยได้ที่ [`../../README.md`](../../README.md)
+อ่านภาพรวมและขอบเขตของโปรเจกต์ได้ที่ [`../../README.md`](../../README.md)
 
 ## หน้าที่ของ frontend
 
-- `/login` รับ username/password และเรียก `POST http://localhost:8000/login.php`
-- `Auth` service เก็บ current user ใน `localStorage`
-- `/main` เรียก `GET http://localhost:8000/menu.php`
-- `Main` component แปลง flat menu list เป็น parent-child tree และเรียงด้วย `sort_order`
+- แสดงหน้า Login และสถานะระหว่างส่งคำขอ
+- เรียก PHP API ผ่าน Angular services
+- เก็บสถานะผู้ใช้สำหรับการสาธิต
+- แสดงหน้าหลักหลังเข้าสู่ระบบ
+- แปลงรายการเมนูเป็น parent-child tree
+- เรียงและเปิด/ปิดรายการเมนูย่อย
 
 ## ติดตั้งและรัน
 
@@ -18,7 +20,9 @@ npm ci
 npm start
 ```
 
-เปิด `http://localhost:4200/` และเปิด PHP API ที่ `http://localhost:8000` ก่อนทดลอง login
+เปิด `http://localhost:4200/`
+
+การทดลอง flow แบบครบระบบต้องเปิด PHP API และตั้งค่า test environment ของผู้ทดลองเอง
 
 ## คำสั่งสำหรับพัฒนา
 
@@ -28,17 +32,15 @@ npm run build
 npm run watch
 ```
 
-## จุดที่แก้เมื่อตั้งค่า environment
+## จุดสำคัญใน source code
 
-- Login API URL: `src/app/services/login.ts`
-- Menu API URL: `src/app/services/menu.ts`
+- API clients และสถานะผู้ใช้: `src/app/services/`
 - Routes: `src/app/app.routes.ts`
 - Login UI: `src/app/login/`
-- Main/menu UI: `src/app/main/`
-
-API URL ยังถูกกำหนดใน source code เพื่อให้ตัวอย่างอ่านง่าย ก่อนใช้หลาย environment ควรย้ายไป Angular environment/configuration provider
+- Main และ Dynamic Menu UI: `src/app/main/`
 
 ## ขอบเขต
 
-Frontend นี้เป็น learning prototype ยังไม่มี server-verified session, route guard, interceptor, session expiry หรือ production authorization โปรดอ่านรายการ security improvements ใน README หลักก่อนนำแนวคิดไปใช้งานจริง
+Frontend นี้เป็น learning prototype ก่อนใช้จริงควรเพิ่ม server-verified session, route guard, interceptor, session expiry, environment configuration และ automated security tests ตาม README หลัก
+
 
