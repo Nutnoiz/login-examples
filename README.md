@@ -105,8 +105,8 @@ Request:
 
 ```json
 {
-  "username": "demo-user",
-  "password": "demo-password"
+  "username": "<username>",
+  "password": "<password>"
 }
 ```
 
