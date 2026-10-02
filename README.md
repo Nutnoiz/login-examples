@@ -155,7 +155,7 @@ Success response:
 
 - Node.js รุ่นที่รองรับ Angular 22
 - npm 11 หรือรุ่นที่เข้ากันได้กับ `package-lock.json`
-- PHP 8 พร้อม extension `sqlsrv` และ `pdo_sqlsrv`
+- PHP 8 พร้อม extension `sqlsrv`
 - SQL Server Express ที่มีฐานข้อมูลและตารางตาม contract
 
 ### 2. ตั้งค่า PHP API
