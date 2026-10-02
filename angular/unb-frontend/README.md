@@ -1,59 +1,44 @@
-# UnbFrontend
+# UNB Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.7.
+Angular 22 standalone frontend สำหรับตัวอย่าง Role-Based Login and Dynamic Menu
 
-## Development server
+อ่านภาพรวม สถาปัตยกรรม Database/API contract วิธีเปิด PHP API และข้อจำกัดด้านความปลอดภัยได้ที่ [`../../README.md`](../../README.md)
 
-To start a local development server, run:
+## หน้าที่ของ frontend
 
-```bash
-ng serve
+- `/login` รับ username/password และเรียก `POST http://localhost:8000/login.php`
+- `Auth` service เก็บ current user ใน `localStorage`
+- `/main` เรียก `GET http://localhost:8000/menu.php`
+- `Main` component แปลง flat menu list เป็น parent-child tree และเรียงด้วย `sort_order`
+
+## ติดตั้งและรัน
+
+```powershell
+npm ci
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+เปิด `http://localhost:4200/` และเปิด PHP API ที่ `http://localhost:8000` ก่อนทดลอง login
 
-## Code scaffolding
+## คำสั่งสำหรับพัฒนา
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```powershell
+npm test
+npm run build
+npm run watch
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## จุดที่แก้เมื่อตั้งค่า environment
 
-```bash
-ng generate --help
-```
+- Login API URL: `src/app/services/login.ts`
+- Menu API URL: `src/app/services/menu.ts`
+- Routes: `src/app/app.routes.ts`
+- Login UI: `src/app/login/`
+- Main/menu UI: `src/app/main/`
 
-## Building
+API URL ยังถูกกำหนดใน source codeเพื่อให้ตัวอย่างอ่านง่าย ก่อนใช้หลาย environment ควรย้ายไป Angular environment/configuration provider
 
-To build the project run:
+## ขอบเขต
 
-```bash
-ng build
-```
+Frontend นี้เป็น learning prototype ยังไม่มี server-verified session, route guard, interceptor, session expiry หรือ production authorization โปรดอ่านรายการ security improvements ใน README หลักก่อนนำแนวคิดไปใช้งานจริง
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
