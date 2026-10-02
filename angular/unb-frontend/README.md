@@ -36,7 +36,7 @@ npm run watch
 - Login UI: `src/app/login/`
 - Main/menu UI: `src/app/main/`
 
-API URL ยังถูกกำหนดใน source codeเพื่อให้ตัวอย่างอ่านง่าย ก่อนใช้หลาย environment ควรย้ายไป Angular environment/configuration provider
+API URL ยังถูกกำหนดใน source code เพื่อให้ตัวอย่างอ่านง่าย ก่อนใช้หลาย environment ควรย้ายไป Angular environment/configuration provider
 
 ## ขอบเขต
 
